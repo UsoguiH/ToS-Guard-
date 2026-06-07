@@ -51,7 +51,10 @@ $excludePatterns = @(
     "dist",
     "build",
     "*.zip",
-    "designmd.txt"
+    "designmd.txt",
+    "demo.mp4",
+    "demo.gif",
+    "demo-poster.png"
 )
 
 # Verify required directories exist.

@@ -20,21 +20,23 @@ ToS Guard is a Chrome/Edge extension that scans any Terms of Service, Privacy Po
 
 ## 🎬 Demo
 
-> **A walkthrough video is on the way.** Drop the link/GIF here once it's recorded.
+<div align="center">
+
+[![ToS Guard demo](assets/demo-poster.png)](assets/demo.mp4)
+
+![ToS Guard scanning a Terms of Service page](assets/demo.gif)
+
+▶️ **[Watch the full-quality video (MP4)](assets/demo.mp4)**
+
+</div>
 
 <!--
-Replace this block with your demo. Two easy options:
-
-1. YouTube thumbnail that links to the video:
-   [![ToS Guard demo](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://youtu.be/VIDEO_ID)
-
-2. An inline GIF stored in the repo:
-   ![ToS Guard in action](assets/demo.gif)
+The animation above is generated programmatically with Remotion — source in /demo.
+Tweak the script and run `npm run render` in /demo to regenerate assets/demo.mp4.
+Prefer your own screen recording? Just replace assets/demo.gif / assets/demo.mp4.
 -->
 
-<div align="center">
-  <em>▶️ &nbsp;Demo video coming soon</em>
-</div>
+> **Note:** A full screen-recorded walkthrough of the live extension is also on the way.
 
 ---
 
@@ -145,7 +147,8 @@ legal/                    Privacy policy + Terms of use (also used for the store
 offscreen/                Notification chime via Web Audio API (MV3 workaround)
 icons/                    16 / 32 / 48 / 128 px icons
 lib/                      Bundled GSAP + Inter/Cairo fonts (no remote loads)
-assets/                   Static assets (chime)
+assets/                   Static assets (chime, demo video/GIF/poster)
+demo/                     Remotion source for the demo video (dev-only, not shipped)
 build.ps1                 Packages a clean dist/*.zip for the Web Store
 ```
 
