@@ -26,7 +26,7 @@ ToS Guard is a Chrome/Edge extension that scans any Terms of Service, Privacy Po
 
 ![ToS Guard scanning a Terms of Service page](assets/demo.gif)
 
-▶️ **[Watch the full-quality video (MP4)](assets/demo.mp4)**
+
 
 </div>
 
