@@ -26,7 +26,7 @@ A real screen recording of ToS Guard scanning **TikTok's Terms of Service** end 
 
 <div align="center">
 
-![ToS Guard — live walkthrough](assets/demo-live.gif)
+![ToS Guard — live walkthrough](assets/demo-live-preview.gif)
 
 ▶️ **[Watch the full-quality version with sound (MP4)](assets/demo-live.mp4)**
 
@@ -43,7 +43,7 @@ A short, programmatically-built montage of the product's key moments — detecti
 </div>
 
 <!--
-- demo-live.gif / demo-live.mp4: a real screen recording, edited (focus zoom + Arabic captions) with the Remotion project in /demo (src/FocusEdit.tsx). GIF autoplays inline; MP4 is full quality with sound.
+- demo-live-preview.gif / demo-live.mp4: a real screen recording, edited (focus zoom + Arabic captions) with the Remotion project in /demo (src/FocusEdit.tsx). GIF autoplays inline; MP4 is full quality with sound.
 - demo.gif / demo.mp4: the fully programmatic overview (src/Demo.tsx).
 -->
 
