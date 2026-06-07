@@ -30,13 +30,6 @@ ToS Guard is a Chrome/Edge extension that scans any Terms of Service, Privacy Po
 
 </div>
 
-<!--
-The animation above is generated programmatically with Remotion — source in /demo.
-Tweak the script and run `npm run render` in /demo to regenerate assets/demo.mp4.
-Prefer your own screen recording? Just replace assets/demo.gif / assets/demo.mp4.
--->
-
-> **Note:** A full screen-recorded walkthrough of the live extension is also on the way.
 
 ---
 
