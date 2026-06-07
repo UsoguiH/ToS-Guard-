@@ -1,0 +1,37 @@
+/* ToS Guard — page highlight styles (Cohere palette) */
+
+mark.tos-guard-mark {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 2px 3px !important;
+  border-radius: 3px !important;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: help;
+}
+
+mark.tos-guard-high {
+  background: linear-gradient(180deg, rgba(179, 0, 0, 0.10), rgba(179, 0, 0, 0.22)) !important;
+  box-shadow: inset 0 -2px 0 0 rgba(179, 0, 0, 0.85);
+}
+
+mark.tos-guard-medium {
+  background: linear-gradient(180deg, rgba(255, 119, 89, 0.14), rgba(255, 119, 89, 0.28)) !important;
+  box-shadow: inset 0 -2px 0 0 rgba(255, 119, 89, 0.9);
+}
+
+mark.tos-guard-low {
+  background: linear-gradient(180deg, rgba(24, 99, 220, 0.10), rgba(24, 99, 220, 0.22)) !important;
+  box-shadow: inset 0 -2px 0 0 rgba(24, 99, 220, 0.85);
+}
+
+mark.tos-guard-pulse {
+  animation: tos-guard-pulse 1.5s ease;
+}
+
+@keyframes tos-guard-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(179, 0, 0, 0.6); }
+  50%  { box-shadow: 0 0 0 12px rgba(179, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(179, 0, 0, 0); }
+}

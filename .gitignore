@@ -1,0 +1,23 @@
+# Build output
+dist/
+*.zip
+
+# Internal design notes (not part of the shipped product)
+designmd.txt
+
+# Dependencies / tooling
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# Editor / OS cruft
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# Local secrets — never commit API keys
+.env
+.env.local

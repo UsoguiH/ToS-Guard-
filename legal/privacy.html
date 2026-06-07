@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ToS Guard — Privacy Policy</title>
+    <link rel="stylesheet" href="../lib/fonts/fonts.css" />
+    <link rel="stylesheet" href="legal.css" />
+  </head>
+  <body>
+    <main class="doc">
+      <header>
+        <a class="back" href="../options/options.html">← Settings</a>
+        <h1>Privacy Policy</h1>
+        <p class="muted">ToS Guard browser extension · Last updated: 2026-05-22</p>
+      </header>
+
+      <section>
+        <h2>Summary</h2>
+        <p>
+          ToS Guard is a privacy-respecting browser extension. <strong>It does not collect, sell, share, or transmit any of your personal data to us or any third party</strong> beyond the single API call you initiate with your own Google Gemini API key.
+        </p>
+      </section>
+
+      <section>
+        <h2>What we store, and where</h2>
+        <p>All of the following is stored <strong>only on your machine</strong>, in the browser's <code>chrome.storage.local</code>:</p>
+        <ul>
+          <li>Your Google Gemini API key (entered by you on the Settings page).</li>
+          <li>Your model preference (e.g. <code>gemini-2.5-flash</code>).</li>
+          <li>Your auto-detect, sound, and language toggles.</li>
+          <li>The list of origins where you clicked "Not now" so we don't re-prompt for ~6 hours.</li>
+          <li>Your scan history — up to the 100 most-recent scans you've run (URL, title, risk score, and the clauses Gemini flagged). You can clear this any time from the History page or Settings.</li>
+        </ul>
+        <p>None of this is uploaded to a ToS Guard server, because there is no ToS Guard server.</p>
+      </section>
+
+      <section>
+        <h2>What we send to Google</h2>
+        <p>When you press <strong>Scan this page</strong>, the extension:</p>
+        <ol>
+          <li>Extracts the visible legal text from the active tab.</li>
+          <li>Truncates it to ~60,000 characters.</li>
+          <li>Sends it in a single HTTPS <code>POST</code> request to <code>https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent</code>, with your API key in the <code>x-goog-api-key</code> header.</li>
+          <li>Receives Gemini's structured JSON response with flagged clauses.</li>
+        </ol>
+        <p>That request is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> and the <a href="https://ai.google.dev/terms" target="_blank" rel="noopener">Google AI / Gemini API terms</a>. We do not see or relay this traffic.</p>
+      </section>
+
+      <section>
+        <h2>What we do <em>not</em> do</h2>
+        <ul>
+          <li>No analytics. No telemetry. No tracking pixels. No fingerprinting.</li>
+          <li>No third-party scripts loaded at runtime — all dependencies (GSAP, fonts) are bundled locally.</li>
+          <li>No background polling — the extension only talks to Google when you press Scan.</li>
+          <li>No advertising. No data sales.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Permissions we request, and why</h2>
+        <ul>
+          <li><code>storage</code> — to remember your API key, settings, and history on this machine.</li>
+          <li><code>activeTab</code> &amp; <code>scripting</code> — to read the legal text of the page you're actively scanning.</li>
+          <li><code>contextMenus</code> — to add the right-click "Scan with ToS Guard" entry.</li>
+          <li><code>offscreen</code> — to play the notification chime under MV3's autoplay restrictions.</li>
+          <li><code>notifications</code> — to optionally show an OS notification when a legal page is detected.</li>
+          <li><code>host_permissions: &lt;all_urls&gt;</code> — required so the auto-detector can read whether the page you're viewing looks like a Terms of Service or Privacy Policy. We only read text; we don't modify pages except to highlight flagged clauses after you scan.</li>
+          <li><code>host_permissions: generativelanguage.googleapis.com</code> — the single endpoint we call when you scan.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Highlighted clauses on the page</h2>
+        <p>After a scan, we add <code>&lt;mark&gt;</code> elements around flagged clauses so you can see them inline. These are removed when you press "Clear highlights" or when you reload the page. We don't modify form inputs, links, or any other page content.</p>
+      </section>
+
+      <section>
+        <h2>Children</h2>
+        <p>ToS Guard is not directed at children under 13. It's a tool for adults who want to understand the legal terms they're agreeing to.</p>
+      </section>
+
+      <section>
+        <h2>Your rights</h2>
+        <p>Because we don't have your data, there's nothing for us to delete, export, or correct. To remove everything ToS Guard has stored on your machine: uninstall the extension, or click <strong>Reset dismissed sites</strong> and <strong>Clear all</strong> on the History page, and remove your API key from Settings.</p>
+      </section>
+
+      <section>
+        <h2>Changes to this policy</h2>
+        <p>If we ever change what data is collected, we'll update this page and bump the "Last updated" date. Substantive changes will be highlighted in the extension's release notes.</p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>Questions? Open an issue at our project repository or email the maintainer listed in the extension's Chrome Web Store listing.</p>
+      </section>
+    </main>
+  </body>
+</html>

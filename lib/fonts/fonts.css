@@ -1,0 +1,32 @@
+/* Local webfonts — bundled for MV3 (no remote loads). */
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./inter-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./inter-500.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./cairo-400.ttf") format("truetype");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088F, U+0890-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFC;
+}
+@font-face {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./cairo-500.ttf") format("truetype");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088F, U+0890-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFC;
+}

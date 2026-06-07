@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ToS Guard</title>
+    <link rel="stylesheet" href="../lib/fonts/fonts.css" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <defs>
+              <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#17171c" />
+                <stop offset="100%" stop-color="#003c33" />
+              </linearGradient>
+            </defs>
+            <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"
+                  fill="url(#lg)" opacity="1"/>
+            <path d="M9 12l2 2 4-4" stroke="#ffffff" stroke-width="2" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="title">
+          <h1>ToS Guard</h1>
+          <span class="tag" id="docType"></span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="langBtn" title="Toggle language">EN</button>
+        <button class="icon-btn" id="historyBtn" title="Scan history" aria-label="History">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6a7 7 0 1 1 2.05 4.95l-1.42 1.42A9 9 0 1 0 13 3zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8z"/></svg>
+        </button>
+        <button class="icon-btn" id="settingsBtn" title="Settings" aria-label="Settings">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M19.4 13a7.5 7.5 0 0 0 0-2l2-1.6-2-3.4-2.4 1a7.5 7.5 0 0 0-1.7-1L15 3h-4l-.3 2.6a7.5 7.5 0 0 0-1.7 1l-2.4-1-2 3.4L6.6 11a7.5 7.5 0 0 0 0 2l-2 1.6 2 3.4 2.4-1c.5.4 1.1.7 1.7 1L11 21h4l.3-2.6c.6-.3 1.2-.6 1.7-1l2.4 1 2-3.4-2-1.6zM13 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ONBOARDING / first-run (no API key) -->
+      <section id="welcomeView" class="view hidden">
+        <div class="welcome">
+          <div class="welcome-icon">
+            <svg viewBox="0 0 64 64" width="72" height="72" aria-hidden="true">
+              <defs>
+                <linearGradient id="wgrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#17171c"/>
+                  <stop offset="100%" stop-color="#003c33"/>
+                </linearGradient>
+              </defs>
+              <path d="M32 6 12 12v14c0 12 8 22 20 26 12-4 20-14 20-26V12L32 6z" fill="url(#wgrad)"/>
+              <path d="M22 32l6 6 14-14" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="welcome-title">Welcome to ToS Guard</h2>
+          <p class="welcome-sub">ToS Guard reads the legal text on any page and flags predatory clauses — in plain English (and Arabic).</p>
+          <ol class="welcome-steps">
+            <li>
+              <span class="step-num">1</span>
+              <div>
+                <strong>Get a free Gemini API key</strong>
+                <p>You'll use your own Google API key — your data stays yours.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <div>
+                <strong>Paste it into Settings</strong>
+                <p>Your key is stored locally on this machine, never on a server.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <div>
+                <strong>Scan any ToS or Privacy page</strong>
+                <p>Click the toolbar icon or accept the banner that pops up automatically.</p>
+              </div>
+            </li>
+          </ol>
+          <div class="welcome-actions">
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="cta cta-sm">Get free key →</a>
+            <button id="welcomeSettingsBtn" class="ghost">Open Settings</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- IDLE / start state -->
+      <section id="idleView" class="view">
+        <div class="hero">
+          <div class="shield-wrap">
+            <svg class="shield" viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
+              <defs>
+                <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#17171c"/>
+                  <stop offset="100%" stop-color="#003c33"/>
+                </linearGradient>
+                <linearGradient id="shieldInner" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(238,236,231,0.85)"/>
+                  <stop offset="100%" stop-color="rgba(255,255,255,1)"/>
+                </linearGradient>
+              </defs>
+              <path d="M60 8 18 22v30c0 26 18 49 42 58 24-9 42-32 42-58V22L60 8z"
+                    fill="url(#shieldGrad)" opacity="0.06"/>
+              <path d="M60 14 24 26v26c0 22 15 42 36 50 21-8 36-28 36-50V26L60 14z"
+                    fill="url(#shieldInner)" stroke="#17171c" stroke-width="1.5"/>
+              <path class="shield-check" d="M44 60l12 12 22-22"
+                    stroke="#17171c" stroke-width="5"
+                    fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="hero-title" data-i18n="hero_title">Scan this page for hidden traps</h2>
+          <p class="hero-sub" data-i18n="hero_sub">ToS Guard reads the legal text on this page and flags clauses that quietly hurt you.</p>
+          <button id="scanBtn" class="cta">
+            <span class="cta-shine"></span>
+            <span class="cta-label" data-i18n="scan">Scan this page</span>
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M5 12h12l-4-4 1.5-1.5L21 12l-6.5 5.5L13 16l4-4H5z"/></svg>
+          </button>
+          <p class="hint" id="hint"></p>
+        </div>
+      </section>
+
+      <!-- LOADING state -->
+      <section id="loadingView" class="view hidden">
+        <div class="loader-stack">
+          <div class="scanner">
+            <div class="doc">
+              <div class="line w70"></div>
+              <div class="line w90"></div>
+              <div class="line w60"></div>
+              <div class="line w85"></div>
+              <div class="line w50"></div>
+              <div class="line w95"></div>
+              <div class="line w75"></div>
+              <div class="line w65"></div>
+            </div>
+            <div class="laser"></div>
+          </div>
+          <div class="loader-text">
+            <div class="loader-title" id="loaderTitle">Reading the fine print…</div>
+            <div class="loader-sub" id="loaderSub">Asking Gemini to flag risky clauses</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESULTS state -->
+      <section id="resultsView" class="view hidden">
+        <div class="score-card">
+          <div class="gauge">
+            <svg viewBox="0 0 140 140" width="140" height="140">
+              <defs>
+                <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#b30000"/>
+                  <stop offset="100%" stop-color="#b30000"/>
+                </linearGradient>
+              </defs>
+              <circle cx="70" cy="70" r="58" stroke="#eeece7" stroke-width="10" fill="none"/>
+              <circle id="gaugeArc" cx="70" cy="70" r="58"
+                      stroke="url(#gaugeGrad)" stroke-width="10" fill="none"
+                      stroke-dasharray="364.42" stroke-dashoffset="364.42"
+                      stroke-linecap="round"
+                      transform="rotate(-90 70 70)"/>
+            </svg>
+            <div class="gauge-center">
+              <div class="gauge-num" id="scoreNum">0</div>
+              <div class="gauge-label" data-i18n="risk_score">risk</div>
+            </div>
+          </div>
+          <div class="score-meta">
+            <div class="badge" id="riskBadge">—</div>
+            <p class="summary" id="summary">—</p>
+            <div class="counts">
+              <span class="count-pill high"><span class="dot"></span><span id="cHigh">0</span> <span data-i18n="high">high</span></span>
+              <span class="count-pill medium"><span class="dot"></span><span id="cMed">0</span> <span data-i18n="medium">medium</span></span>
+              <span class="count-pill low"><span class="dot"></span><span id="cLow">0</span> <span data-i18n="low">low</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-actions">
+          <button class="ghost" id="rescanBtn" data-i18n="rescan">Re-scan</button>
+          <button class="ghost" id="highlightBtn" data-i18n="highlight_page">Highlight on page</button>
+        </div>
+
+        <div class="clauses" id="clauses"></div>
+      </section>
+
+      <!-- ERROR state -->
+      <section id="errorView" class="view hidden">
+        <div class="error-card">
+          <div class="error-icon">!</div>
+          <h3 id="errorTitle">Something went wrong</h3>
+          <p id="errorMsg">—</p>
+          <div class="error-actions">
+            <button class="ghost" id="errOptionsBtn" data-i18n="open_settings">Open settings</button>
+            <button class="cta cta-sm" id="errRetryBtn" data-i18n="retry">Retry</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footbar">
+      <span data-i18n="footer">Powered by Gemini · your key, your data</span>
+    </footer>
+
+    <template id="clauseTpl">
+      <article class="clause" data-idx="">
+        <header class="clause-head">
+          <div class="sev-pill"><span class="dot"></span><span class="sev-text"></span></div>
+          <div class="clause-title"></div>
+          <button class="clause-toggle" aria-label="expand">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+          </button>
+        </header>
+        <div class="clause-body">
+          <p class="clause-why"></p>
+          <blockquote class="clause-snippet"></blockquote>
+          <div class="clause-actions">
+            <span class="cat-chip"></span>
+            <button class="link-btn jump-btn" data-i18n="jump">Jump on page →</button>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="../lib/gsap.min.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
