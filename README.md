@@ -20,16 +20,34 @@ ToS Guard is a Chrome/Edge extension that scans any Terms of Service, Privacy Po
 
 ## 🎬 Demo
 
+### Live walkthrough
+
+A real screen recording of ToS Guard scanning **TikTok's Terms of Service** end to end — the extension detects the legal page, scans it with Gemini, scores it **85/100 (high risk)**, breaks down the flagged clauses in Arabic, and highlights the matching text directly on the page. The interface here is in **Arabic (RTL)**; the same flow works in English.
+
 <div align="center">
 
+<video src="https://github.com/UsoguiH/ToS-Guard-/raw/main/assets/demo-live.mp4" controls width="900">
+  <a href="https://github.com/UsoguiH/ToS-Guard-/raw/main/assets/demo-live.mp4"><img src="assets/demo-live-poster.png" width="900" alt="ToS Guard — live walkthrough"></a>
+</video>
 
-
-![ToS Guard scanning a Terms of Service page](assets/demo.gif)
-
-
+▶️ **[Watch the live walkthrough (MP4)](assets/demo-live.mp4)** &nbsp;·&nbsp; if the player doesn't load, the link plays/downloads it.
 
 </div>
 
+### Animated overview
+
+A short, programmatically-built montage of the product's key moments — detection, risk gauge, clause cards, bilingual explanations, and on-page highlighting.
+
+<div align="center">
+
+![ToS Guard animated overview](assets/demo.gif)
+
+</div>
+
+<!--
+- demo-live.mp4 is a real screen recording, edited (focus zoom + Arabic captions) with the Remotion project in /demo (src/FocusEdit.tsx).
+- demo.gif / demo.mp4 is the fully programmatic overview (src/Demo.tsx).
+-->
 
 ---
 

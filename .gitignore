@@ -2,6 +2,15 @@
 dist/
 *.zip
 
+# Working video files at the repo root (raw recordings / intermediate renders).
+# The published demos live in assets/ — these are scratch and stay local.
+/ToS_Demo.mp4
+/ToS_Demo_focused.mp4
+/ToS_Demo_focused_v2.mp4
+/ToS-Guard-extension-demo.mp4
+# Source recordings dropped into the Remotion project (outputs go to assets/)
+demo/public/*.mp4
+
 # Internal design notes (not part of the shipped product)
 designmd.txt
 

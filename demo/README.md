@@ -1,9 +1,20 @@
-# ToS Guard — demo video (Remotion)
+# ToS Guard — demo videos (Remotion)
 
-The animated demo in the main README is generated here with
-[Remotion](https://www.remotion.dev/) — the whole video is React components,
-not a screen recording. Colors and fonts are pulled straight from the
-extension's `popup.css` so it matches the real product.
+The demos in the main README are produced here with
+[Remotion](https://www.remotion.dev/). There are three compositions:
+
+- **`ToSGuardDemo`** (`src/Demo.tsx`) — the animated overview montage
+  (`assets/demo.mp4` / `demo.gif`). Pure React, not a screen recording.
+- **`ToSFocusEdit`** (`src/FocusEdit.tsx`) — the **live walkthrough**
+  (`assets/demo-live.mp4`): a real screen recording with a keyframed focus
+  camera (smooth zoom-in/Ken-Burns) and Arabic lower-third captions.
+  It reads the recording from `public/ToS_Demo.mp4` (kept out of git — drop
+  your own recording there and adjust the keyframe table in `FocusEdit.tsx`).
+- **`ToSGuardExtensionDemo`** (`src/ExtensionDemo.tsx`) — a fully synthetic
+  re-creation of the popup using the extension's real `popup.css`/`content.css`.
+
+Colors and fonts are pulled straight from the extension's `popup.css` so the
+synthetic visuals match the real product.
 
 ## Regenerate the video
 
